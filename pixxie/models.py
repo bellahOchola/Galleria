@@ -26,13 +26,21 @@ class Images(models.Model):
         return images
 
     @classmethod
-    def search_by_category(cls,search_term):
-        details = cls.objects.filter(category__icontains=search_term)
-        return details
+    def get_pixxies_cat(cls,categ):
+        categ_pixxies = cls.objects.filter(category = categ)
+        print (categ_pixxies)
+
+        return categ_pixxies
 
 
 class Category(models.Model):
     categ = models.CharField(max_length=50)
+
+    @classmethod
+    def search_category(cls,search_term):
+        category = cls.objects.filter(categ__icontains=search_term)
+
+        return category
 
 class Location(models.Model):   
     locate = models.CharField(max_length=50)

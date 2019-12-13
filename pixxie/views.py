@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Images
+from .models import Images,Category
 
 # Create your views here.
 def index(request):
@@ -20,10 +20,12 @@ def single_photo(request, photo_id):
 def search_results(request):
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
-        searched_images = Images.search_by_category(search_term)
+        searched_categ = Category.search_category(search_term)
         message = f'{search_term}'
 
-        return render(request, 'all_pixxies/search.html', {'message': message, 'photoz':searched_images})
+        searched_image = Images.get_pixxies_cat(searched_categ)
+
+        return render(request, 'all_pixxies/search.html', {'message': message, 'photoz':searched_image})
 
     else:
         message = 'You havent searched for any item'
