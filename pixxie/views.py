@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from .models import Images,Category
+from .models import Images,Category,Location
 
 # Create your views here.
 def index(request):
     all_data = Images.get_pixxies()
 
+    photo_loc = Location.get_location()
 
-    return render(request, 'all_pixxies/index.html', {'all_data':all_data})
+    return render(request, 'all_pixxies/index.html', {'all_data':all_data, 'photo_loc':photo_loc})
 
 def single_photo(request, photo_id):
     try:
@@ -20,6 +21,7 @@ def single_photo(request, photo_id):
 def search_results(request):
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
+
         searched_categ = Category.search_category(search_term)
         message = f'{search_term}'
 
@@ -30,3 +32,10 @@ def search_results(request):
     else:
         message = 'You havent searched for any item'
         return render(request, 'all_pxxies/search.html', {'message':message})
+
+
+def location_pixxies(request,loct_id):
+
+    pixxies_by_location = Images.pixxies_by_loct(loct_id)
+
+    return render(request, 'all_pixxies/location.html', {'pixxies_by_location':pixxies_by_location})

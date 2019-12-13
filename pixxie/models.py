@@ -32,6 +32,13 @@ class Images(models.Model):
 
         return categ_pixxies
 
+    
+    @classmethod
+    def pixxies_by_loct(cls, loct):
+        loct_pixxies = cls.objects.filter(location = loct)
+
+        return loct_pixxies
+
 
 class Category(models.Model):
     categ = models.CharField(max_length=50)
@@ -41,8 +48,13 @@ class Category(models.Model):
         category = cls.objects.filter(categ__icontains=search_term)
 
         return category
+        
 
 class Location(models.Model):   
     locate = models.CharField(max_length=50)
+    
+    @classmethod
+    def get_location(cls):
+        location = cls.objects.all()
 
-
+        return location

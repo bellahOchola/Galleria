@@ -1,0 +1,14 @@
+{% extends 'all_pixxies/base.html' %}
+
+{% block content %}
+{{block.super}}
+
+<p>
+    thi page works
+</p>
+{% for images in pixxies_by_location %}
+<div>
+    {{ images.title }}
+</div>
+{% endfor %}
+{% endblock %}

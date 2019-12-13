@@ -12,10 +12,9 @@
         <a href="{% url 'photo' new_data.id %}"><h2 class="text-center"> {{ new_data.title }} </h2></a>
       </div>
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{new_data.image_url.url}}" class="img-responsive" width="30%" alt="Image">
-          </div>
-  
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src="{{new_data.image_url.url}}" class="img-responsive" width="30%" alt="Image">
+      </div>
     </div>
   
     {% empty %}
@@ -23,7 +22,16 @@
       <h2 class="text-center">There are no Pictures</h2>
     </div>
     {% endfor %}
-  
+    
+
+    {% for location in photo_loc %}
+    <div>
+      <a href="{% url 'location' location.id %}">
+        {{ location.locate }}
+      </a>
+    </div>
+    {% endfor %}
+    
   </div>
 
 {% endblock %}
