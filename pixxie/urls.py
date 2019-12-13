@@ -4,7 +4,8 @@ from . import views
 from django.conf.urls import url
 
 urlpatterns=[
-    url(r'^$', views.index, name= 'mainPage')
+    url('^$', views.index, name= 'mainPage'),
+    url(r'^img/(\d+)', views.single_photo, name = 'photo' )
 ]
 
 if settings.DEBUG:

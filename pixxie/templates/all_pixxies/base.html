@@ -8,12 +8,15 @@
     <title>Galleria</title>
 
     {% block styles %}
-    {% bootstrap_css %}
+        {% bootstrap_css %}
     {% endblock %}
 
 </head>
 <body>
-    
     {% include 'navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+    
 </body>
 </html>

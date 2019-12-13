@@ -15,7 +15,16 @@ class Images(models.Model):
 
     class Meta:
         ordering =['title']
-    
+
+    def save_pixxies(self):
+        self.save()
+
+    @classmethod
+    def get_pixxies(cls):
+        images = cls.objects.all()
+
+        return images
+
 
 class Category(models.Model):
     categ = models.CharField(max_length=50)
