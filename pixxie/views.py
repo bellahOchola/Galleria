@@ -15,7 +15,7 @@ def single_photo(request, photo_id):
     except DoesNotExist:
         raise Http404()
 
-    return render(request, 'all_pixxies/image.html', {'photos':photos})
+    return render(request, 'all_pixxies/index.html', {'photos':photos})
 
 
 def search_results(request):
