@@ -49,8 +49,9 @@
                 <p>{{new_data.description}}</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <input type="text" width="100%" value="{{new_data.image_url.url}}" id="imagelink">
+                <button type="button" class="btn btn-outline-warning" onclick="copy()" data-dismiss="modal">Copy</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -62,6 +63,16 @@
         {% endfor %}
       </div>
     </div>
+
+    <script>
+      function copy(){
+    var copyText = document.getElementById("imagelink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Copied the link: " + copyText.value);
+}
+    </script>
   
 
 
