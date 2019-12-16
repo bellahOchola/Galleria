@@ -1,10 +1,10 @@
 {%extends 'all_pixxies/base.html'%}
 {% block content %}
-<div class="container">
+<div class="container" style="background-image:url('')">
 
   <div class="row">
     {% if photoz %}
-    <h2>Found {{ photoz|length }} of searched term {{message}}</h2>
+    <h3 class="text-center" style="margin-top: 20px; margin-bottom: 20px;">Found {{ photoz|length }} of searched term {{message}}</h3>
     {% else %}
     <h2> The category {{message}} does not exist </h2>
     {% endif %}
