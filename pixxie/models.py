@@ -66,6 +66,14 @@ class Category(models.Model):
 
 class Location(models.Model):   
     locate = models.CharField(max_length=50)
+
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
     
     @classmethod
     def get_location(cls):
