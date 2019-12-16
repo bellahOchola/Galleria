@@ -5,7 +5,6 @@ from django.conf.urls import url
 
 urlpatterns=[
     url('^$', views.index, name= 'mainPage'),
-    url(r'^img/(\d+)', views.single_photo, name = 'photo' ),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^location/(?P<location>\w+)', views.location_pixxies, name='location')
 ]

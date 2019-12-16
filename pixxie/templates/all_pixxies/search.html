@@ -15,7 +15,8 @@
     {% if photoz %}
     {% for photo in photoz %}
     <div class="col-sm-6 col-md-3">
-      <h1>{{photo.title}}</h1>
+      <p> {{photo.title}} </p>
+      <img src="{{photo.image_url.url}}" width="100%" height="300px" alt="">
     </div>
     {% endfor %}
     {% endif %}
