@@ -19,6 +19,9 @@ class Images(models.Model):
     def save_pixxies(self):
         self.save()
 
+    def delete_pixxies(self):
+        self.delete()
+
     @classmethod
     def get_pixxies(cls):
         images = cls.objects.all()
