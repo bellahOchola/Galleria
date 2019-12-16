@@ -9,13 +9,13 @@ def index(request):
 
     return render(request, 'all_pixxies/index.html', {'all_data':all_data, 'photo_loc':photo_loc})
 
-# def single_photo(request, photo_id):
-#     try:
-#         photos = Images.objects.get(id = photo_id)
-#     except DoesNotExist:
-#         raise Http404()
+def single_photo(request, photo_id):
+    try:
+        photos = Images.objects.get(id = photo_id)
+    except DoesNotExist:
+        raise Http404()
 
-#     return render(request, 'all_pixxies/image.html', {'photos':photos})
+    return render(request, 'all_pixxies/image.html', {'photos':photos})
 
 
 def search_results(request):
