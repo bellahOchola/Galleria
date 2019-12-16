@@ -15,27 +15,27 @@ def single_photo(request, photo_id):
     except DoesNotExist:
         raise Http404()
 
-    return render(request, 'all_pixxies/index.html', {'photos':photos})
+    return render(request, 'all_pixxies/image.html', {'photos':photos})
 
 
 def search_results(request):
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
 
-        searched_categ = Category.search_category(search_term)
+        searched_categ = Images.search_category(search_term)
         message = f'{search_term}'
 
-        searched_image = Images.get_pixxies_cat(searched_categ)
+        # searched_image = Images.get_pixxies_cat(searched_categ)
 
-        return render(request, 'all_pixxies/search.html', {'message': message, 'photoz':searched_image})
+        return render(request, 'all_pixxies/search.html', {'message': message, 'photoz':searched_categ})
 
     else:
         message = 'You havent searched for any item'
         return render(request, 'all_pxxies/search.html', {'message':message})
 
 
-def location_pixxies(request,loct_id):
+def location_pixxies(request,location):
 
-    pixxies_by_location = Images.pixxies_by_loct(loct_id)
+    pixxies_by_location = Images.pixxies_by_loct(location)
 
     return render(request, 'all_pixxies/location.html', {'pixxies_by_location':pixxies_by_location})

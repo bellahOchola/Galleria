@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 class Images(models.Model):
@@ -24,17 +25,23 @@ class Images(models.Model):
 
         return images
 
-    @classmethod
-    def get_pixxies_cat(cls,categ):
-        categ_pixxies = cls.objects.filter(category = categ)
-        print (categ_pixxies)
+    # @classmethod
+    # def get_pixxies_cat(cls,categ):
+    #     categ_pixxies = cls.objects.filter(category = categ)
+    #     print (categ_pixxies)
 
-        return categ_pixxies
+    #     return categ_pixxies
+
+    @classmethod
+    def search_category(cls,search_term):
+        category = cls.objects.filter(category__categ__icontains=search_term)
+
+        return category
 
     
     @classmethod
-    def pixxies_by_loct(cls, loct):
-        loct_pixxies = cls.objects.filter(location = loct)
+    def pixxies_by_loct(cls, location):
+        loct_pixxies = Images.objects.filter(location__locate=location).all()
 
         return loct_pixxies
 
@@ -42,11 +49,16 @@ class Images(models.Model):
 class Category(models.Model):
     categ = models.CharField(max_length=50)
 
-    @classmethod
-    def search_category(cls,search_term):
-        category = cls.objects.filter(categ__icontains=search_term)
+    def __str__(self):
+        return self.categ
 
-        return category
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    
         
 
 class Location(models.Model):   
